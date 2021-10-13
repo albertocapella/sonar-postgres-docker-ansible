@@ -1,0 +1,5 @@
+[amazon]
+13.52.100.120 ansible_user=ec2-user
+
+[all:vars]
+ansible_python_interpreter = /usr/bin/python2

@@ -1,0 +1,56 @@
+---
+# tasks file for docker
+- name: Upgrade all packages
+  yum:
+    name: '*'
+    state: latest
+  when:
+    - CONF_MIRROR
+    - ansible_distribution == "Amazon"
+
+- name: Install Requirements
+  package:
+    name: "{{ AMZ_DOCKER_REQUIREMENTS }}"
+    state: present
+  when:
+    - CONF_MIRROR
+    - ansible_distribution == "Amazon"
+
+- name: Install python-pip requirements
+  pip:
+    name: docker
+    extra_args: --user
+  # with_items:
+  #   - docker
+  #   # - docker-py
+  when:
+    - CONF_MIRROR
+    - ansible_distribution == "Amazon"
+
+- name: Update repo lists
+  yum:
+    list: repos
+    update_cache: true
+  when:
+    - CONF_MIRROR
+    - ansible_distribution == "Amazon"
+
+- name: Install Docker Engine
+  package:
+    name: "{{ AMZ_DOCKER_PACKAGES }}"
+    state: present
+  when:
+    - ansible_distribution == "Amazon"
+
+- name: Enable Docker Engine
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+  when:
+    - ansible_distribution == "Amazon"
+
+- name: pull an image
+  docker_image:
+    name: debian:latest
+    source: pull

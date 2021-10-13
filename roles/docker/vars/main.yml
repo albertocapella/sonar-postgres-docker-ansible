@@ -1,0 +1,23 @@
+---
+# vars file for docker
+AMZ_DOCKER_REQUIREMENTS:
+  - amazon-linux-extras
+  - python2-pip
+  # - python-pip-wheel
+
+AMZ_DOCKER_PACKAGES:
+  - docker
+
+DEB_DOCKER_PREREQUISITES:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - gnupg-agent
+  - software-properties-common
+
+DEB_DOCKER_PACKAGES:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+
+DOCKER_TAG: latest

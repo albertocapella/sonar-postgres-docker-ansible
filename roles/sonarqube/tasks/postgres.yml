@@ -16,9 +16,9 @@
       - postgresql:/var/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
     env:
-      POSTGRES_USER: "sonarqube"
+      POSTGRES_USER: "{{ POSTGRES_USERNAME }}"
       POSTGRES_PASSWORD: "{{ CUSTOM_PASSWORD }}"
-      POSTGRES_DB: "sonarqube"
+      POSTGRES_DB: "{{ POSTGRES_DATABASE_NAME }}"
 
 - name: sleep for 10 seconds and continue with play
   wait_for:

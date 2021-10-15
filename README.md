@@ -25,6 +25,9 @@ Role Variables
 #### external_vars.yml
 * **DOCKER_PRUNE** use in case of uninstall sonarqube and pogres. This command delete all containers, images, and volumes. By default is **false**.
 
+#### secret.yml
+* **CUSTOM_PASSWORD** is the password of the postgreSQL username.
+
 Dependencies
 ------------
 
@@ -41,3 +44,18 @@ Including an example of how to use your role (for instance, with variables passe
       roles:
          - docker
          - sonarqube
+
+Instructions
+------------
+
+* Update the **host** file with the IPv4 of the remote server.
+* Update **CUSTOM_PASSWORD** variable in the secret.yml file. See [docs](docs/README.md) for more details.
+* Execute the following command:
+```
+$ ansible-playbook -i hosts playbook.yml --ask-vault-pass
+```
+
+* If you need to undeploy sonarqube (only), you can execute the following:
+```
+$ ansible-playbook -i hosts playbook.yml -e DOCKER_PRUNE=true --ask-vault-pass
+```

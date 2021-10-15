@@ -3,7 +3,7 @@
   become: yes
   vars_files:
     - external_vars.yml
-    # - secret.yml
+    - secret.yml
   roles:
     - docker
     - sonarqube

@@ -25,6 +25,9 @@ Role Variables
 
 #### defaults/main.yml
 * **POSTGRES_DOCKER_IMG** is the name of the postgreSQL docker image. By default is **postgres**.
+* **CUSTOM_PASSWORD** is the default password of the postgreSQL username.
+* **POSTGRES_USERNAME** is the name of the postgreSQL username. By default is **sonarqube**.
+* **POSTGRES_DATABASE_NAME** is the name of the postgreSQL database. By default is **sonarqube**.
 * **SONARQUBE_DOCKER_IMG** is the name of the Sonarqube docker image. By default is **sonarqube**.
 
 #### vars/main.yml

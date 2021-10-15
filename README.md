@@ -55,7 +55,7 @@ Instructions
 $ ansible-playbook -i hosts playbook.yml --ask-vault-pass
 ```
 
-* If you need to undeploy sonarqube (only), you can execute the following:
+* If you need to undeploy sonarqube and postgres, you can execute the following:
 ```
 $ ansible-playbook -i hosts playbook.yml -e DOCKER_PRUNE=true --ask-vault-pass
 ```

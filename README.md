@@ -49,6 +49,7 @@ Instructions
 ------------
 
 * Update the **host** file with the IPv4 of the remote server.
+* Update the variable ansible_user in the **host** file if you needed.
 * Update **CUSTOM_PASSWORD** variable in the secret.yml file. See [docs](docs/README.md) for more details.
 * Execute the following command:
 ```

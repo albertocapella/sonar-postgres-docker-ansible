@@ -1,5 +1,5 @@
 [amazon]
-13.52.100.120 ansible_user=ec2-user
+127.0.0.1 ansible_user=task
 
 [all:vars]
 ansible_python_interpreter = /usr/bin/python2

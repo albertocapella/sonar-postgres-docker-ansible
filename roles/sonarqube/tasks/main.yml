@@ -1,0 +1,17 @@
+---
+# tasks file for sonarqube
+- name: Sysctl parameters
+  include_tasks: sysctl.yml
+  when: DOCKER_PRUNE != "true"
+
+- name: Deploy Postgres
+  include_tasks: postgres.yml
+  when: DOCKER_PRUNE != "true"
+
+- name: Deploy Sonarqube
+  include_tasks: sonarqube.yml
+  when: DOCKER_PRUNE != "true"
+
+- name: Docker Prune
+  include_tasks: docker_prune.yml
+  when: DOCKER_PRUNE == "true"

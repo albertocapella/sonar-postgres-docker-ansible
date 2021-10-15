@@ -1,0 +1,9 @@
+---
+# defaults file for sonarqube
+CUSTOM_PASSWORD: SoNaR12345PoStGrEs
+
+POSTGRES_DOCKER_IMG: postgres
+POSTGRES_USERNAME: sonarqube
+POSTGRES_DATABASE_NAME: sonarqube
+
+SONARQUBE_DOCKER_IMG: sonarqube

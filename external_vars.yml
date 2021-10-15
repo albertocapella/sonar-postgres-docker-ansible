@@ -1,1 +1,3 @@
 ---
+# Externals variables
+DOCKER_PRUNE: false

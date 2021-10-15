@@ -1,6 +1,7 @@
-Ansible Sonarqube PostgreSQL
+Sonarqube
 =========
-This playbook install docker and deploy Sonarqube using PostgreSQL with JDBC over Amazon Linux
+
+This ansible role, deploy a sonarqube with postgreSQL over docker containers.
 
 Requirements
 ------------
@@ -22,14 +23,19 @@ AWS EC2 instance or a bare metal server with the following requirements:
 Role Variables
 --------------
 
-#### external_vars.yml
+#### defaults/main.yml
+* **POSTGRES_DOCKER_IMG** is the name of the postgreSQL docker image. By default is **postgres**.
+* **SONARQUBE_DOCKER_IMG** is the name of the Sonarqube docker image. By default is **sonarqube**.
+
+#### vars/main.yml
 * **DOCKER_PRUNE** use in case of uninstall sonarqube and pogres. This command delete all containers, images, and volumes. By default is **false**.
+* **POSTGRES_DOCKER_TAG**: the tag name of PostgreSQL docker image. By default is **14.0**.
+* **SONARQUBE_DOCKER_TAG** the tag name of Sonarqubbe docker image. By default is **8.9.2-community**.
 
 Dependencies
 ------------
 
-* [docker](roles/docker/README.md)
-* [sonarqube](roles/sonarqube/README.md)
+A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
 Example Playbook
 ----------------
@@ -39,5 +45,14 @@ Including an example of how to use your role (for instance, with variables passe
     - hosts: servers
       become: yes
       roles:
-         - docker
          - sonarqube
+
+License
+-------
+
+BSD
+
+Author Information
+------------------
+
+An optional section for the role authors to include contact information, or a website (HTML is not allowed).

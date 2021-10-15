@@ -1,12 +1,20 @@
 docker
 =========
 
-This role install docker over Debian/Ubuntu.
+This role install docker over Amazon Linux.
 
 Requirements
 ------------
 
-Hardware:
+Software for bastion host:
+* [ansible](https://www.ansible.com/) 2.9.26. An extra-simple tool/framework/API for doing 'remote things'.  It is the simplest way to automate apps and IT infrastructure.  Application Deployment + Configuration Management + Continuous Delivery.
+> The bastion host will execute this playbook
+
+Software for remote host:
+* OpenSSH Server.
+> Read more information [here](https://docs.ansible.com/ansible/2.9/modules/docker_container_module.html).
+
+AWS EC2 instance or a bare metal server with the following requirements:
 * At least 1GB of RAM.
 * At least 10GB of storage.
 
@@ -14,16 +22,16 @@ Role Variables
 --------------
 
 #### defaults/main.yml
-* **CONF_MIRROR**, can be true or false, and is used to setup (or not) the custom mirror used to install docker.
+* **CONF_MIRROR**, is used to setup docker mirror, can be true or false. By default is **true**.
 
 #### vars/main.yml
-* **DOCKER_PREREQUISITES**, a list of the packages needed to install docker.
-* **DOCKER_PACKAGES**, a list of the docker packages to will be install.
+* **AMZ_DOCKER_REQUIREMENTS**, a list of packages needed to install docker.
+* **AMZ_DOCKER_PACKAGES**, a docker package name to will be install.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+* [docker](../docker/README.md)
 
 Example Playbook
 ----------------
@@ -34,5 +42,3 @@ Including an example of how to use your role (for instance, with variables passe
       become: yes
       roles:
          - docker
-
-> By default, this role not configure apt repository, to configure it, set CONF_MIRROR to true.

@@ -1,0 +1,25 @@
+---
+# Deploy postgres
+- name: Pull postgres docker image
+  docker_image:
+    name: "{{ POSTGRES_DOCKER_IMG }}:{{ POSTGRES_DOCKER_TAG }}"
+    source: pull
+
+- name: postgres container started
+  docker_container:
+    name: postgres
+    state: started
+    image: "{{ POSTGRES_DOCKER_IMG }}:{{ POSTGRES_DOCKER_TAG }}"
+    ports:
+     - "5432:5432"
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+    env:
+      POSTGRES_USER: "sonarqube"
+      POSTGRES_PASSWORD: "{{ CUSTOM_PASSWORD }}"
+      POSTGRES_DB: "sonarqube"
+
+- name: sleep for 10 seconds and continue with play
+  wait_for:
+    timeout: 10

@@ -1,3 +1,4 @@
 ---
-- include_tasks: amazon_linux.yml
-# - include_tasks: ubuntu.yml
+- name: Installing docker
+  include_tasks: amazon_linux.yml
+  when: DOCKER_PRUNE != "true"

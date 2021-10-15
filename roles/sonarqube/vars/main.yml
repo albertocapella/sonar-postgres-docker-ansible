@@ -1,0 +1,5 @@
+---
+# vars file for sonarqube
+DOCKER_PRUNE: false
+SONARQUBE_DOCKER_TAG: 8.9.2-community
+POSTGRES_DOCKER_TAG: 14.0

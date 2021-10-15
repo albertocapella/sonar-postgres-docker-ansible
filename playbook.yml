@@ -1,7 +1,9 @@
 ---
 - hosts: amazon
   become: yes
-  # vars_files:
-  #   - external_vars.yml
+  vars_files:
+    - external_vars.yml
+    # - secret.yml
   roles:
     - docker
+    - sonarqube

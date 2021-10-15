@@ -1,0 +1,19 @@
+---
+# DOCKER PRUNE
+- name: stopped sonarqube docker
+  docker_container:
+    name: sonarqube
+    state: stopped
+
+- name: stopped postgres docker
+  docker_container:
+    name: postgres
+    state: stopped
+
+- name: Prune images and volumes
+  docker_prune:
+    containers: yes
+    images: yes
+    images_filters:
+      dangling: false
+    volumes: yes

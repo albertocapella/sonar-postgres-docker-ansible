@@ -49,8 +49,3 @@
     enabled: yes
   when:
     - ansible_distribution == "Amazon"
-
-- name: pull an image
-  docker_image:
-    name: debian:latest
-    source: pull

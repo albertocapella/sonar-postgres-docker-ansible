@@ -1,0 +1,13 @@
+---
+# Sysctl parameters
+- sysctl:
+    name: vm.max_map_count
+    value: '524288'
+    state: present
+    reload: yes
+
+- sysctl:
+    name: fs.file-max
+    value: '131072'
+    state: present
+    reload: yes
